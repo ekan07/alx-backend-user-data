@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+"""Representation of Authentication class
 """
 from flask import request
 from typing import List, TypeVar
@@ -7,7 +7,7 @@ import re
 
 
 class Auth:
-    """ Auth class
+    """Auth class
     """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
@@ -27,7 +27,7 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ handles authorization header
+        """ Authorization header
         """
         if request is None:
             return None
@@ -36,6 +36,6 @@ class Auth:
         return request.headers.get('Authorization')
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ Validates current user
+        """Get current user
         """
         return None
