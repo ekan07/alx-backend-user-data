@@ -3,10 +3,9 @@
 Route module for the API
 """
 from os import getenv
-from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
-import os
+from api.v1.views import app_views
 
 
 app = Flask(__name__)
@@ -74,7 +73,6 @@ def before_request() -> str:
             and auth.session_cookie(request) is None:
         abort(401)
 
-    # if auth.current_user(request) is None:
     current_user = auth.current_user(request)
     if current_user is None:
         abort(403)
